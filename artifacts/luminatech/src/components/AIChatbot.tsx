@@ -1,6 +1,93 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Fragment } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Bot, User, Loader2, MessageCircle, Trash2 } from "lucide-react";
+
+function MarkdownMessage({ content, isUser }: { content: string; isUser: boolean }) {
+  const parseLine = (line: string, key: number) => {
+    const parts: React.ReactNode[] = [];
+    const regex = /(\*\*(.+?)\*\*|\*(.+?)\*|`(.+?)`)/g;
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    while ((match = regex.exec(line)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(line.slice(lastIndex, match.index));
+      }
+      if (match[2] !== undefined) {
+        parts.push(<strong key={match.index} className="font-semibold">{match[2]}</strong>);
+      } else if (match[3] !== undefined) {
+        parts.push(<em key={match.index}>{match[3]}</em>);
+      } else if (match[4] !== undefined) {
+        parts.push(
+          <code key={match.index} className={`px-1 py-0.5 rounded text-xs font-mono ${isUser ? "bg-red-700" : "bg-gray-100"}`}>
+            {match[4]}
+          </code>
+        );
+      }
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex < line.length) {
+      parts.push(line.slice(lastIndex));
+    }
+    return <Fragment key={key}>{parts}</Fragment>;
+  };
+
+  const lines = content.split("\n");
+  const elements: React.ReactNode[] = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+    const numberedMatch = line.match(/^(\d+)\.\s+(.+)/);
+    const bulletMatch = line.match(/^[-*•]\s+(.+)/);
+
+    if (numberedMatch) {
+      const listItems: React.ReactNode[] = [];
+      while (i < lines.length) {
+        const lm = lines[i].match(/^(\d+)\.\s+(.+)/);
+        if (!lm) break;
+        listItems.push(
+          <li key={i} className="ml-1">{parseLine(lm[2], i)}</li>
+        );
+        i++;
+      }
+      elements.push(
+        <ol key={`ol-${i}`} className="list-decimal list-inside space-y-1 my-1">
+          {listItems}
+        </ol>
+      );
+    } else if (bulletMatch) {
+      const listItems: React.ReactNode[] = [];
+      while (i < lines.length) {
+        const bm = lines[i].match(/^[-*•]\s+(.+)/);
+        if (!bm) break;
+        listItems.push(
+          <li key={i} className="ml-1">{parseLine(bm[1], i)}</li>
+        );
+        i++;
+      }
+      elements.push(
+        <ul key={`ul-${i}`} className="list-disc list-inside space-y-1 my-1">
+          {listItems}
+        </ul>
+      );
+    } else if (line.trim() === "") {
+      if (elements.length > 0) {
+        elements.push(<div key={`br-${i}`} className="h-1" />);
+      }
+      i++;
+    } else {
+      elements.push(
+        <p key={i} className="leading-relaxed">
+          {parseLine(line, i)}
+        </p>
+      );
+      i++;
+    }
+  }
+
+  return <div className="space-y-0.5 text-sm">{elements}</div>;
+}
 
 interface Message {
   id: string;
@@ -209,13 +296,15 @@ export default function AIChatbot() {
                     )}
                   </div>
                   <div
-                    className={`max-w-[80%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
+                    className={`max-w-[80%] px-3 py-2 rounded-2xl ${
                       msg.role === "user"
                         ? "bg-red-600 text-white rounded-tr-sm"
                         : "bg-white text-gray-800 border border-gray-100 shadow-sm rounded-tl-sm"
                     }`}
                   >
-                    {msg.content || (
+                    {msg.content ? (
+                      <MarkdownMessage content={msg.content} isUser={msg.role === "user"} />
+                    ) : (
                       <span className="flex gap-1 items-center py-0.5">
                         <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
                         <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
