@@ -15,8 +15,13 @@ export function CtaSection() {
             <p className="text-lg md:text-xl text-white/90 mb-10">
               Konsultasi gratis, tanpa komitmen. Mari diskusikan kebutuhan digital bisnis Anda dan wujudkan hari ini.
             </p>
-            <Button size="lg" variant="white" className="rounded-full h-14 px-8 text-lg w-full sm:w-auto hover:scale-105 transition-transform" onClick={() => window.open('https://wa.me/1234567890', '_blank')}>
-              <MessageCircle className="w-5 h-5 mr-2" />
+            <Button
+              size="lg"
+              variant="white"
+              className="rounded-full py-4 px-8 text-base sm:text-lg w-full sm:w-auto mx-auto hover:scale-105 transition-transform"
+              onClick={() => window.open('https://wa.me/1234567890', '_blank')}
+            >
+              <MessageCircle className="w-5 h-5 mr-2 shrink-0" />
               Mulai Sekarang (WhatsApp)
             </Button>
           </div>

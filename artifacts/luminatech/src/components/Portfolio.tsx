@@ -1,41 +1,48 @@
 import { motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
 
+import imgTokoPintar from "@/assets/portfolio-tokopintar.png"
+import imgKlinikSehat from "@/assets/portfolio-kliniksehat.png"
+import imgRestoCafe from "@/assets/portfolio-restocafe.png"
+import imgPtMajuJaya from "@/assets/portfolio-ptmajujaya.png"
+import imgEduKids from "@/assets/portfolio-edukids.png"
+import imgFitLife from "@/assets/portfolio-fitlife.png"
+
 const projects = [
   {
     title: "TokoPintar UMKM",
     category: "E-commerce",
-    gradient: "from-green-400 to-emerald-600",
+    image: imgTokoPintar,
     tags: ["React", "Tailwind", "Stripe"]
   },
   {
     title: "KlinikSehat Digital",
     category: "Website Klinik",
-    gradient: "from-blue-400 to-indigo-600",
+    image: imgKlinikSehat,
     tags: ["Next.js", "Booking System"]
   },
   {
     title: "RestoCafe Online",
     category: "Landing Page",
-    gradient: "from-orange-400 to-red-500",
+    image: imgRestoCafe,
     tags: ["HTML/CSS", "Framer Motion"]
   },
   {
     title: "PT Maju Jaya",
     category: "Company Profile",
-    gradient: "from-purple-400 to-violet-600",
+    image: imgPtMajuJaya,
     tags: ["WordPress", "SEO"]
   },
   {
     title: "EduKids Platform",
     category: "Web App",
-    gradient: "from-pink-400 to-rose-500",
+    image: imgEduKids,
     tags: ["React", "Node.js", "LMS"]
   },
   {
     title: "FitLife App",
     category: "Landing Page",
-    gradient: "from-teal-400 to-cyan-600",
+    image: imgFitLife,
     tags: ["Vue", "Tailwind"]
   }
 ]
@@ -63,21 +70,11 @@ export function Portfolio() {
               className="group cursor-pointer"
             >
               <div className="relative overflow-hidden rounded-2xl mb-4 aspect-[4/3] bg-slate-200">
-                {/* Gradient Placeholder replacing real images */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90 transition-transform duration-500 group-hover:scale-105`} />
-                
-                {/* Abstract UI details inside placeholder */}
-                <div className="absolute inset-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 flex flex-col p-4 shadow-xl transition-transform duration-500 group-hover:scale-105">
-                  <div className="w-1/3 h-4 bg-white/40 rounded-full mb-4" />
-                  <div className="flex-1 flex gap-3">
-                    <div className="w-1/2 h-full bg-white/20 rounded-lg" />
-                    <div className="w-1/2 flex flex-col gap-2">
-                       <div className="w-full h-8 bg-white/20 rounded" />
-                       <div className="w-full h-8 bg-white/20 rounded" />
-                       <div className="w-3/4 h-8 bg-white/20 rounded" />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
 
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
@@ -86,7 +83,7 @@ export function Portfolio() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex justify-between items-start">
                 <div>
                   <p className="text-sm font-medium text-primary mb-1">{project.category}</p>
