@@ -353,7 +353,7 @@ export default function AIChatbot() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 left-6 z-50 w-14 h-14 bg-gradient-to-br from-red-500 to-red-700 rounded-full shadow-lg shadow-red-500/30 flex items-center justify-center text-white"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-br from-red-500 to-red-700 rounded-full shadow-lg shadow-red-500/30 flex items-center justify-center text-white"
         aria-label="Open AI Chat"
       >
         <AnimatePresence mode="wait">

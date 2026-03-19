@@ -7,7 +7,6 @@ import { Pricing } from "@/components/Pricing"
 import { Testimonials } from "@/components/Testimonials"
 import { CtaSection } from "@/components/CtaSection"
 import { Footer } from "@/components/Footer"
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp"
 import AIChatbot from "@/components/AIChatbot"
 
 export default function LandingPage() {
@@ -26,7 +25,6 @@ export default function LandingPage() {
       </main>
 
       <Footer />
-      <FloatingWhatsApp />
       <AIChatbot />
     </div>
   )
