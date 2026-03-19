@@ -53,40 +53,40 @@
 }
 
 :root {
-  /* Deep Blue/Indigo to Violet theme */
-  --background: 210 40% 98%;
-  --foreground: 222 47% 11%;
+  /* Red & White theme */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 10%;
   
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 250 84% 54%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 0 84% 50%;
   
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
-  --card-border: 214 32% 91%;
+  --card-foreground: 0 0% 10%;
+  --card-border: 0 0% 90%;
   
   --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
-  --popover-border: 214 32% 91%;
+  --popover-foreground: 0 0% 10%;
+  --popover-border: 0 0% 90%;
   
-  /* Primary: Indigo */
-  --primary: 250 84% 54%;
-  --primary-foreground: 210 40% 98%;
+  /* Primary: Red */
+  --primary: 0 84% 50%;
+  --primary-foreground: 0 0% 100%;
   
-  /* Secondary: Soft Blue */
-  --secondary: 210 40% 96%;
-  --secondary-foreground: 222 47% 11%;
+  /* Secondary: Light Red/Pink tint */
+  --secondary: 0 30% 96%;
+  --secondary-foreground: 0 0% 10%;
   
-  /* Muted: Grayish Blue */
-  --muted: 210 40% 96%;
-  --muted-foreground: 215 16% 47%;
+  /* Muted: Light Gray */
+  --muted: 0 10% 96%;
+  --muted-foreground: 0 0% 45%;
   
-  /* Accent: Violet */
-  --accent: 270 70% 55%;
-  --accent-foreground: 210 40% 98%;
+  /* Accent: Deep Red */
+  --accent: 0 70% 40%;
+  --accent-foreground: 0 0% 100%;
   
   --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 100%;
 
   --radius: 0.75rem;
 
@@ -98,35 +98,35 @@
 }
 
 .dark {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
+  --background: 0 0% 8%;
+  --foreground: 0 0% 95%;
   
-  --border: 217 33% 17%;
-  --input: 217 33% 17%;
-  --ring: 250 84% 54%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 0 84% 55%;
   
-  --card: 222 47% 11%;
-  --card-foreground: 210 40% 98%;
-  --card-border: 217 33% 17%;
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 95%;
+  --card-border: 0 0% 20%;
   
-  --popover: 222 47% 11%;
-  --popover-foreground: 210 40% 98%;
-  --popover-border: 217 33% 17%;
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 95%;
+  --popover-border: 0 0% 20%;
   
-  --primary: 250 84% 60%;
-  --primary-foreground: 222 47% 11%;
+  --primary: 0 84% 55%;
+  --primary-foreground: 0 0% 100%;
   
-  --secondary: 217 33% 17%;
-  --secondary-foreground: 210 40% 98%;
+  --secondary: 0 0% 18%;
+  --secondary-foreground: 0 0% 95%;
   
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
+  --muted: 0 0% 18%;
+  --muted-foreground: 0 0% 60%;
   
-  --accent: 270 70% 65%;
-  --accent-foreground: 210 40% 98%;
+  --accent: 0 70% 45%;
+  --accent-foreground: 0 0% 100%;
   
-  --destructive: 0 62% 30%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: 0 62% 35%;
+  --destructive-foreground: 0 0% 100%;
 }
 
 @layer base {
@@ -149,12 +149,12 @@
 }
 
 .bg-mesh {
-  background-color: #f8fafc;
+  background-color: #fff5f5;
   background-image: 
-    radial-gradient(at 0% 0%, hsla(250,84%,54%,0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(270,70%,55%,0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, hsla(210,100%,70%,0.15) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, hsla(250,84%,54%,0.15) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(0,84%,50%,0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(0,70%,40%,0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(0,84%,60%,0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(0,70%,50%,0.10) 0px, transparent 50%);
 }
 
 .glass-panel {
