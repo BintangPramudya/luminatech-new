@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "LuminaTech - Digital Agency"
+version = "1.0.0"
+id = "artifacts/luminatech"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22602
+
+[services.development]
+run = "pnpm --filter @workspace/luminatech run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/luminatech", "run", "build" ]
+publicDir = "artifacts/luminatech/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22602"
+BASE_PATH = "/"

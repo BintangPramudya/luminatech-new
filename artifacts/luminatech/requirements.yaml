@@ -1,0 +1,11 @@
+packages:
+  "framer-motion": "For smooth scroll fade-in animations and premium interaction feel"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility function to efficiently merge Tailwind CSS classes"
+
+images: []
+
+notes:
+  - Frontend-only landing page, no backend endpoints required.
+  - Using framer-motion for the requested smooth fade-in and hover animations.
+  - Implement smooth scrolling via standard CSS scroll-behavior: smooth.
