@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 const plans = [
   {
     name: "Basic",
-    price: "1.000.000",
+    price: "1.500.000",
     description: "Sempurna untuk profil personal atau UMKM pemula.",
     features: [
       "Maksimal 5 Halaman",
@@ -20,7 +20,7 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "2.500.000",
+    price: "3.000.000",
     description: "Solusi lengkap untuk brand yang ingin tampil menonjol.",
     features: [
       "Unlimited Halaman",

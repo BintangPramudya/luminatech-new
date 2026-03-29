@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react"
 import { Link } from "wouter"
 import { Button } from "@/components/ui/button"
-import { Zap, Menu, X, Sun, Moon } from "lucide-react"
+import { Zap, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { useTheme } from "@/hooks/useTheme"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 const navLinks = [
   { name: "Tentang Kami", href: "#tentang" },
@@ -16,7 +15,6 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { theme, toggle } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,82 +65,19 @@ export function Navbar() {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
-            {/* Theme Toggle */}
-            <button
-              onClick={toggle}
-              aria-label="Toggle theme"
-              className="w-9 h-9 rounded-full flex items-center justify-center border border-border bg-background hover:bg-muted transition-colors"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                {theme === "dark" ? (
-                  <motion.span
-                    key="sun"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Sun className="w-4 h-4 text-amber-400" />
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key="moon"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Moon className="w-4 h-4 text-slate-600" />
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </button>
-
+          <div className="hidden md:block">
             <Button onClick={() => scrollTo('#kontak')} className="rounded-full">
               Hubungi Kami
             </Button>
           </div>
 
-          {/* Mobile right side */}
-          <div className="flex md:hidden items-center gap-2">
-            <button
-              onClick={toggle}
-              aria-label="Toggle theme"
-              className="w-9 h-9 rounded-full flex items-center justify-center border border-border bg-background hover:bg-muted transition-colors"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                {theme === "dark" ? (
-                  <motion.span
-                    key="sun"
-                    initial={{ rotate: -90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Sun className="w-4 h-4 text-amber-400" />
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key="moon"
-                    initial={{ rotate: 90, opacity: 0 }}
-                    animate={{ rotate: 0, opacity: 1 }}
-                    exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Moon className="w-4 h-4 text-slate-600" />
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </button>
-
-            <button
-              className="p-2 text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X /> : <Menu />}
-            </button>
-          </div>
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden p-2 text-foreground"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
       </div>
 
